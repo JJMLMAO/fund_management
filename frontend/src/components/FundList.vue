@@ -14,14 +14,14 @@
   <div class="d-flex">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">Fund Type</h5>
+        <h5 class="card-title">{{ fundType }}</h5>
 
-        <p class="card-text">Some quick example</p>
+        <p class="card-text">{{ fundDescription }}</p>
       </div>
       <div class="card-footer d-flex justify-content-end">
         <div>
           <button class="btn btn-secondary">
-            <router-link to="/fund">Explore</router-link>
+            <router-link to="/fund_type_details">Explore</router-link>
           </button>
         </div>
       </div>
@@ -35,7 +35,7 @@
       <div class="card-footer d-flex justify-content-end">
         <div>
           <button class="btn btn-secondary">
-            <router-link to="/fund">Explore</router-link>
+            <router-link to="/fund_type_details">Explore</router-link>
           </button>
         </div>
       </div>
@@ -70,4 +70,11 @@ const fetchMessage = async () => {
 // };
 
 // onMounted(fetchFunds);
+
+// mock data
+
+const fundType = ref("Equity Fund");
+const fundDescription = ref(
+  "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here, making it look like readable English."
+);
 </script>
