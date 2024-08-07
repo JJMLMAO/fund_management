@@ -15,3 +15,5 @@ class TestAPIView(APIView):
 class FundViewSet(viewsets.ModelViewSet):
     queryset = Fund.objects.all()
     serializer_class = FundSerializers
+    
+

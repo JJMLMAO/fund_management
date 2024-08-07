@@ -1,41 +1,23 @@
 <template>
-  <button class="btn btn-dark" @click="fetchMessage">Fetch from Django</button>
-  <div>
-    <h1>Funds</h1>
-    <ul>
-      <li v-for="fund in funds" :key="fund.id">
-        <router-link :to="{ path: `/fund/${fund.id}` }">
-          {{ fund.name }} - NAV: ${{ fund.nav }}
-        </router-link>
-      </li>
-    </ul>
-  </div>
+  <h1>Funds</h1>
 
-  <div class="d-flex">
-    <div class="card">
+  <div class="d-flex flex-wrap">
+    <div class="card" v-for="fund in funds" :key="fund.id">
       <div class="card-body">
-        <h5 class="card-title">{{ fundType }}</h5>
+        <h5 class="card-title">{{ fund.investment_type }}</h5>
 
-        <p class="card-text">{{ fundDescription }}</p>
+        <p class="card-text">{{ fund.description }}</p>
       </div>
       <div class="card-footer d-flex justify-content-end">
         <div>
-          <button class="btn btn-secondary">
-            <router-link to="/fund_type_details">Explore</router-link>
-          </button>
-        </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Fund Type 2</h5>
-
-        <p class="card-text">Some quick example</p>
-      </div>
-      <div class="card-footer d-flex justify-content-end">
-        <div>
-          <button class="btn btn-secondary">
-            <router-link to="/fund_type_details">Explore</router-link>
+          <button class="btn btn-outline-secondary">
+            <router-link
+              :to="{
+                name: 'fund_type_details',
+                params: { type: fund.investment_type },
+              }"
+              >Explore</router-link
+            >
           </button>
         </div>
       </div>
@@ -44,37 +26,24 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import axios from "axios";
 
 const funds = ref([]);
+const error = ref(null);
 
-const message = ref("No Message yet");
-
-const fetchMessage = async () => {
+const fetchFunds = async () => {
   try {
-    const response = await axios.get("http://localhost:8000/api/api/test/");
-    message.value = response.data.message;
-  } catch (error) {
-    console.error("Error fetching message:", error);
-    message.value = "Error fetching message";
+    console.log("Fetching funds...");
+    const response = await axios.get("http://localhost:8000/api/funds/");
+    console.log("Response:", response.data);
+    funds.value = response.data;
+    console.log("funds value: ", funds.value);
+  } catch (err) {
+    console.error("Error fetching funds:", err);
+    error.value = "An error occurred while fetching funds.";
   }
 };
 
-// const fetchFunds = async () => {
-//   try {
-//     const response = await axios.get("http://localhost:8000/api/api/funds");
-//   } catch {
-//     console.log("error");
-//   }
-// };
-
-// onMounted(fetchFunds);
-
-// mock data
-
-const fundType = ref("Equity Fund");
-const fundDescription = ref(
-  "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here, making it look like readable English."
-);
+onMounted(fetchFunds);
 </script>

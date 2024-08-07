@@ -1,10 +1,10 @@
 <template>
-  <h2>Performance for International Growth Funds</h2>
-  <Line :data="chartData" :options="chartOptions" />
+  <h2>{{ fund?.name }}</h2>
+  <Line v-if="chartData" :data="chartData" :options="chartOptions" />
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, defineProps, onMounted } from "vue";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -16,7 +16,6 @@ import {
   Legend,
 } from "chart.js";
 import { Line } from "vue-chartjs";
-import * as chartConfig from "../utils/chartConfig.js";
 
 // Register necessary Chart.js components
 ChartJS.register(
@@ -29,6 +28,32 @@ ChartJS.register(
   Legend
 );
 
-const chartData = ref(chartConfig.data);
-const chartOptions = ref(chartConfig.options);
+const chartData = ref(null);
+const chartOptions = ref({
+  responsive: true,
+  maintainAspectRatio: true,
+});
+const generateChartData = () => {
+  // Generate random data
+  const data = Array.from({ length: 7 }, () => Math.floor(Math.random() * 100));
+
+  chartData.value = {
+    labels: ["January", "February", "March", "April", "May", "June", "July"],
+    datasets: [
+      {
+        label: "Fund Performance",
+        backgroundColor: "#f87979",
+        data,
+      },
+    ],
+  };
+};
+
+defineProps({
+  fund: Object,
+});
+
+onMounted(() => {
+  generateChartData();
+});
 </script>

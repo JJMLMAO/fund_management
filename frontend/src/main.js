@@ -15,8 +15,16 @@ const router = createRouter({
   history: createWebHistory(),
   routes: [
     { path: "/", component: FundList },
-    { path: "/fund_type_details/", component: FundTypeDetails },
-    { path: "/fund_details/", component: FundDetails },
+    {
+      path: "/fund_type_details/:type",
+      name: "fund_type_details",
+      component: FundTypeDetails,
+    },
+    {
+      path: "/fund_details/:id",
+      name: "fund_details",
+      component: FundDetails,
+    },
     { path: "/fund_invest/", component: FundInvest },
     { path: "/my_portfolio", component: MyPortfolio },
 

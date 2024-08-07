@@ -1,0 +1,52 @@
+[
+    {
+        "name": "Global Equity Fund",
+        "description": "A fund that invests in global equities.",
+        "investment_type": "Equity",
+        "current_nav": 120.50,
+        "ytd_return": 8.25,
+        "currency": "MYR",
+        "risk_profile": "Low",
+        "shahriah_compliant": "Yes"
+    },
+    {
+        "name": "Bond Income Fund",
+        "description": "A fund that invests in government and corporate bonds.",
+        "investment_type": "Bond",
+        "current_nav": 98.75,
+        "ytd_return": 4.10,
+        "currency": "MYR",
+        "risk_profile": "Low",
+        "shahriah_compliant": "Yes"
+    },
+    {
+        "name": "Technology Growth Fund",
+        "description": "A fund focusing on technology sector growth stocks.",
+        "investment_type": "Growth",
+        "current_nav": 145.30,
+        "ytd_return": 12.50,
+        "currency": "MYR",
+        "risk_profile": "High",
+        "shahriah_compliant": "Yes"
+    },
+    {
+        "name": "Balanced Income Fund",
+        "description": "A fund with a balanced allocation between stocks and bonds.",
+        "investment_type": "Balanced",
+        "current_nav": 110.00,
+        "ytd_return": 6.80,
+        "currency": "MYR",
+        "risk_profile": "Medium",
+        "shahriah_compliant": "No"
+    },
+    {
+        "name": "Emerging Markets Fund",
+        "description": "A fund that targets investments in emerging markets.",
+        "investment_type": "Emerging Markets",
+        "current_nav": 135.60,
+        "ytd_return": 10.15,
+        "currency": "MYR",
+        "risk_profile": "High",
+        "shahriah_compliant": "Yes"
+    }
+]

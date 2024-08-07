@@ -5,3 +5,4 @@ class FundSerializers(serializers.ModelSerializer):
     class Meta:
         model =Fund
         fields = '__all__'
+
