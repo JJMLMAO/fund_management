@@ -1,7 +1,7 @@
 # fund_management
 
 Instructions to run this:
-1. Clone this repo
+1. Clone this repo (master branch)
 2. Open the project folder and open 2 terminals (1 for Django API another 1 for frontend)
 3. On the django terminal
      'run pip install virtualenv'
